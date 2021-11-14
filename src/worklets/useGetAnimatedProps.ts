@@ -1,4 +1,4 @@
-import {  useAnimatedProps } from 'react-native-reanimated';
+import Animated, { interpolateColor, interpolate, useAnimatedProps } from 'react-native-reanimated';
 import { createPath, addCurve, interpolatePath } from 'react-native-redash';
 
 const START_Y = 30;
@@ -6,7 +6,7 @@ const X_OFFSET = 18;
 const Y_OFFSET = 10;
 const EDGE_OFFSET = 5;
 
-export const useGetAnimatedProps = ({ width, offset, animationClock }) => useAnimatedProps(() => {
+export const useGetAnimatedProps = ({ width, offset, fill, animationClock }) => useAnimatedProps(() => {
   'worklet';
 
   const startX = width / 2;
@@ -26,6 +26,12 @@ export const useGetAnimatedProps = ({ width, offset, animationClock }) => useAni
   });
 
   return {
+    stroke: interpolateColor(
+      animationClock.value,
+      [0, 20],
+      ['transparent', fill],
+    ),
+    strokeWidth: interpolate(animationClock.value, [0, 20], [0, 5]),
     d: interpolatePath(animationClock.value, [0, 20], [straightArrow, upArrow]),
   };
 });

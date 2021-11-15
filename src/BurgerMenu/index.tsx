@@ -73,8 +73,6 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({
     animationType: typeSetting,
   });
 
-  // animatedPropsLineTwo, animatedPropsLineThree
-
   const animationPaths = [animatedPropsLineOne, animatedPropsLineTwo, animatedPropsLineThree];
 
   const rotationStyle = useAnimatedStyle(() => ({

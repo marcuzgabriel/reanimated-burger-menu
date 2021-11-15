@@ -1,5 +1,17 @@
-import React from 'react';
+import React, { Dispatch, SetStateAction } from 'react';
 import styled from 'styled-components/native';
+
+interface ConfigurationProps {
+  settings: {
+    color: string;
+    animationDuration: number;
+    itemOffset: number;
+    scale: number;
+  };
+  setSettings: Dispatch<
+    SetStateAction<{ color: string; animationDuration: number; itemOffset: number; scale: number }>
+  >;
+}
 
 const H2 = styled.Text<{ textAlign?: string; fontWeight?: string }>`
   font-size: 1.5em;
@@ -45,7 +57,7 @@ const configurationSettings = {
   animationDurations: [250, 500, 1000],
 };
 
-const Configruation: React.FC = ({ settings, setSettings }) => (
+const Configruation: React.FC<ConfigurationProps> = ({ settings, setSettings }) => (
   <ConfigurationWrapper>
     <Margin margin="0px 0px 32px 0px">
       <H2 textAlign="left" fontWeight="bold">
@@ -60,7 +72,7 @@ const Configruation: React.FC = ({ settings, setSettings }) => (
       {configurationSettings.colors.map(color => (
         <Margin margin="0px 6px 0px 0px">
           <ItemWrapper
-            onPress={() => setSettings({ ...settings, color })}
+            onPress={(): void => setSettings({ ...settings, color })}
             isSelected={color === settings.color}
           >
             <H2>{color}</H2>
@@ -76,7 +88,7 @@ const Configruation: React.FC = ({ settings, setSettings }) => (
         {configurationSettings.scaling.map(scale => (
           <Margin margin="0px 6px 0px 0px">
             <ItemWrapper
-              onPress={() => setSettings({ ...settings, scale })}
+              onPress={(): void => setSettings({ ...settings, scale })}
               isSelected={scale === settings.scale}
             >
               <H2>{scale}</H2>
@@ -93,7 +105,7 @@ const Configruation: React.FC = ({ settings, setSettings }) => (
         {configurationSettings.itemOffset.map(offset => (
           <Margin margin="0px 6px 0px 0px">
             <ItemWrapper
-              onPress={() => setSettings({ ...settings, itemOffset: offset })}
+              onPress={(): void => setSettings({ ...settings, itemOffset: offset })}
               isSelected={offset === settings.itemOffset}
             >
               <H2>{offset}</H2>
@@ -110,7 +122,7 @@ const Configruation: React.FC = ({ settings, setSettings }) => (
         {configurationSettings.animationDurations.map(animationDuration => (
           <Margin margin="0px 6px 0px 0px">
             <ItemWrapper
-              onPress={() => setSettings({ ...settings, animationDuration })}
+              onPress={(): void => setSettings({ ...settings, animationDuration })}
               isSelected={animationDuration === settings.animationDuration}
             >
               <H2>{animationDuration}</H2>

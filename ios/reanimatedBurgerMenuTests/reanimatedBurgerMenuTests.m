@@ -7,11 +7,11 @@
 #define TIMEOUT_SECONDS 600
 #define TEXT_TO_LOOK_FOR @"Welcome to React"
 
-@interface reanimatedBurgerMenuTests : XCTestCase
+@interface ReanimatedBurgerMenuTests : XCTestCase
 
 @end
 
-@implementation reanimatedBurgerMenuTests
+@implementation ReanimatedBurgerMenuTests
 
 - (BOOL)findSubviewInView:(UIView *)view matching:(BOOL(^)(UIView *view))test
 {

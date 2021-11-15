@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "reanimatedBurgerMenu.app"
-               BlueprintName = "reanimatedBurgerMenu"
-               ReferencedContainer = "container:reanimatedBurgerMenu.xcodeproj">
+               BuildableName = "ReanimatedBurgerMenu.app"
+               BlueprintName = "ReanimatedBurgerMenu"
+               ReferencedContainer = "container:ReanimatedBurgerMenu.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "reanimatedBurgerMenuTests.xctest"
-               BlueprintName = "reanimatedBurgerMenuTests"
-               ReferencedContainer = "container:reanimatedBurgerMenu.xcodeproj">
+               BuildableName = "ReanimatedBurgerMenuTests.xctest"
+               BlueprintName = "ReanimatedBurgerMenuTests"
+               ReferencedContainer = "container:ReanimatedBurgerMenu.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "reanimatedBurgerMenu.app"
-            BlueprintName = "reanimatedBurgerMenu"
-            ReferencedContainer = "container:reanimatedBurgerMenu.xcodeproj">
+            BuildableName = "ReanimatedBurgerMenu.app"
+            BlueprintName = "ReanimatedBurgerMenu"
+            ReferencedContainer = "container:ReanimatedBurgerMenu.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "reanimatedBurgerMenu.app"
-            BlueprintName = "reanimatedBurgerMenu"
-            ReferencedContainer = "container:reanimatedBurgerMenu.xcodeproj">
+            BuildableName = "ReanimatedBurgerMenu.app"
+            BlueprintName = "ReanimatedBurgerMenu"
+            ReferencedContainer = "container:ReanimatedBurgerMenu.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

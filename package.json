@@ -14,7 +14,7 @@
     "lint-diff": "eslint --ext '.js,.ts,.tsx' src/** && yarn prettier --check src/**",
     "web": "cross-env NODE_ENV=development webpack serve --config web/webpack.config.js",
     "web:clean": "rimraf web/vendor/ web/build",
-    "web:build": "rimraf web/build/; cross-env NODE_ENV=production webpack --config web/webpack.config.js",
+    "web:build": "cross-env NODE_ENV=production webpack --config web/webpack.config.js",
     "type:check": "yarn tsc --noEmit",
     "type:generate:windows": "yarn type:generate:clean && yarn type:generate:create && yarn type:generate:tsc && yarn type:generate:delete:windows && yarn type:generate:copy:windows",
     "type:generate:ios": "yarn type:generate:clean && yarn type:generate:create && yarn type:generate:tsc && yarn type:generate:delete:ios && yarn type:generate:copy:ios",

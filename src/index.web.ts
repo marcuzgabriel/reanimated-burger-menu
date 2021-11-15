@@ -3,7 +3,7 @@ import App from '.';
 
 interface WebappRootTag {
   __webappRootTag?: HTMLElement;
-  document: Document & any /* eslint-disable-line @typescript-eslint/no-explicit-any */;
+  document: Document & any  ;
 }
 
 type GlobalType = NodeJS.Global & typeof globalThis & WebappRootTag;

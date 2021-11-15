@@ -4,14 +4,24 @@
 declare module '@marcuzgabriel/reanimated-burger-menu' {
   import React from 'react';
   import Animated from 'react-native-reanimated';
-  import { ScrollViewProps } from 'react-native';
-}
+  export interface BurgerMenuProps {
+    scale?: number;
+    color?: string;
+    type?: string;
+    itemOffset?: number;
+    animationDuration?: number;
+  }
 
-  // // Components
-  // export function BottomSheet<P extends BottomSheetConfiguration>(props: P): React.ReactElement<P>;
-  // export function InputField<P extends InputFieldProps>(props: P): React.ReactElement<P>;
-  // export function SnapEffect<P extends SnapEffectProps>(props: P): React.ReactElement<P>;
-  // export function ScrollViewWithSnapEffect(): React.ReactElement;
-  // export function ScrollViewKeyboardAvoid<P extends ScrollViewKeyboardAvoidProps>(
-  //   props: P,
-  // ): React.ReactElement<P>;
+  export interface UseGetAnimatedProps {
+    dimensions: {
+      width: number;
+      height: number;
+    };
+    offset: number;
+    fill: string;
+    animationClock: Animated.SharedValue<number>;
+    animationType?: string;
+  }
+
+  export function BurgerMenu<P extends BurgerMenuProps>(props: P): React.ReactElement<P>;
+}

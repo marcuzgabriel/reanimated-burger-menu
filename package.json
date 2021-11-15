@@ -122,5 +122,9 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/marcuzgabriel/reanimated-burger-menu.git"
+  },
+  "publishConfig": {
+    "access": "restricted",
+    "registry":"https://npm.pkg.github.com/"
   }
 }

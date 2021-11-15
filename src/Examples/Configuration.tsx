@@ -42,7 +42,7 @@ const configurationSettings = {
   colors: ['red', 'blue', 'white'],
   scaling: [0.5, 0.7, 1],
   itemOffset: [10, 12, 15],
-  animationDurations: [200, 250, 500],
+  animationDurations: [250, 500, 1000],
 };
 
 const Configruation: React.FC = ({ settings, setSettings }) => (
@@ -105,7 +105,7 @@ const Configruation: React.FC = ({ settings, setSettings }) => (
     <Margin margin="6px 0px 0px 0px">
       <ConfigurationRowWrapper>
         <FlexWrapper>
-          <H2 textAlign="left">Item offset: </H2>
+          <H2 textAlign="left">Animation duration: </H2>
         </FlexWrapper>
         {configurationSettings.animationDurations.map(animationDuration => (
           <Margin margin="0px 6px 0px 0px">

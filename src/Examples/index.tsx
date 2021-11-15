@@ -104,7 +104,7 @@ const Examples: React.FC = () => {
         backgroundColor: '#000000',
         component: (
           <BurgerMenu
-            type="slider"
+            type="boring"
             color={settings.color}
             scale={settings.scale}
             itemOffset={settings.itemOffset}

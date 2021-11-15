@@ -17,6 +17,8 @@ export const useGetAnimatedPropsThirdLine = ({
     const startY = height / 2;
     const x_offset = width >= 50 ? width / 4 : width / 6;
 
+    const directional_offset = width / 6;
+
     const straightArrow = createPath({ x: startX - x_offset, y: startY + offset });
     addCurve(straightArrow, {
       to: { x: startX + x_offset, y: startY + offset },
@@ -24,11 +26,14 @@ export const useGetAnimatedPropsThirdLine = ({
       c2: { x: startX + x_offset, y: startY + offset },
     });
 
-    const directionalArrow = createPath({ x: startX - x_offset, y: startY - x_offset });
+    const directionalArrow = createPath({
+      x: startX - directional_offset,
+      y: startY - directional_offset,
+    });
     addCurve(directionalArrow, {
-      c1: { x: startX - x_offset, y: startY - x_offset },
-      c2: { x: startX + x_offset, y: startY + x_offset },
-      to: { x: startX + x_offset, y: startY + x_offset },
+      c1: { x: startX - directional_offset, y: startY - directional_offset },
+      c2: { x: startX + directional_offset, y: startY + directional_offset },
+      to: { x: startX + directional_offset, y: startY + directional_offset },
     });
 
     return {

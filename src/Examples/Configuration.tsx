@@ -14,9 +14,37 @@ interface ConfigurationProps {
 }
 
 const H2 = styled.Text<{ textAlign?: string; fontWeight?: string }>`
-  font-size: 1.5em;
-  font-weight: ${({ fontWeight }): string => fontWeight ?? 'regular'};
+  font-size: 25px;
+  font-weight: ${({ fontWeight }): string => fontWeight ?? 'normal'};
   text-align: ${({ textAlign }): string => textAlign ?? 'center'};
+`;
+
+const Body = styled.Text<{ textAlign?: string; fontWeight?: string }>`
+  font-size: 18px;
+  font-weight: ${({ fontWeight }): string => fontWeight ?? 'normal'};
+  text-align: ${({ textAlign }): string => textAlign ?? 'center'};
+  color: black;
+`;
+
+const Margin = styled.View<{
+  marginTop?: number;
+  marginBottom?: number;
+  marginRight?: number;
+  marginLeft?: number;
+  marginVertical?: number;
+}>`
+  ${({ marginTop, marginBottom, marginLeft, marginRight, marginVertical }): string => {
+    if (marginVertical) {
+      return `margin: ${marginVertical}px 0px;`;
+    }
+
+    return `
+      margin-top: ${marginTop ?? 0}px;
+      margin-bottom: ${marginBottom ?? 0}px;
+      margin-left: ${marginLeft ?? 0}px;
+      margin-right: ${marginRight ?? 0}px;
+    `;
+  }}
 `;
 
 const ConfigurationWrapper = styled.View`
@@ -46,10 +74,6 @@ const FlexWrapper = styled.View`
   flex: 1;
 `;
 
-const Margin = styled.View<{ margin: string }>`
-  margin: ${({ margin }): string => margin};
-`;
-
 const configurationSettings = {
   colors: ['red', 'blue', 'white'],
   scaling: [0.5, 0.7, 1],
@@ -59,73 +83,71 @@ const configurationSettings = {
 
 const Configruation: React.FC<ConfigurationProps> = ({ settings, setSettings }) => (
   <ConfigurationWrapper>
-    <Margin margin="0px 0px 32px 0px">
-      <H2 textAlign="left" fontWeight="bold">
-        Simple configuration matrix for test purpose:{' '}
-      </H2>
+    <Margin marginBottom={32}>
+      <H2 fontWeight="bold">Simple configuration matrix for test purpose: </H2>
     </Margin>
     <ConfigurationRowWrapper>
       <FlexWrapper>
-        <H2 textAlign="left">Color: </H2>
+        <Body textAlign="left">Color: </Body>
       </FlexWrapper>
 
       {configurationSettings.colors.map(color => (
-        <Margin margin="0px 6px 0px 0px">
+        <Margin marginRight={6}>
           <ItemWrapper
             onPress={(): void => setSettings({ ...settings, color })}
             isSelected={color === settings.color}
           >
-            <H2>{color}</H2>
+            <Body>{color}</Body>
           </ItemWrapper>
         </Margin>
       ))}
     </ConfigurationRowWrapper>
-    <Margin margin="6px 0px 0px 0px">
+    <Margin marginTop={6}>
       <ConfigurationRowWrapper>
         <FlexWrapper>
-          <H2 textAlign="left">Scales: </H2>
+          <Body textAlign="left">Scales: </Body>
         </FlexWrapper>
         {configurationSettings.scaling.map(scale => (
-          <Margin margin="0px 6px 0px 0px">
+          <Margin marginRight={6}>
             <ItemWrapper
               onPress={(): void => setSettings({ ...settings, scale })}
               isSelected={scale === settings.scale}
             >
-              <H2>{scale}</H2>
+              <Body>{scale}</Body>
             </ItemWrapper>
           </Margin>
         ))}
       </ConfigurationRowWrapper>
     </Margin>
-    <Margin margin="6px 0px 0px 0px">
+    <Margin marginTop={6}>
       <ConfigurationRowWrapper>
         <FlexWrapper>
-          <H2 textAlign="left">Item offset: </H2>
+          <Body textAlign="left">Item offset: </Body>
         </FlexWrapper>
         {configurationSettings.itemOffset.map(offset => (
-          <Margin margin="0px 6px 0px 0px">
+          <Margin marginRight={6}>
             <ItemWrapper
               onPress={(): void => setSettings({ ...settings, itemOffset: offset })}
               isSelected={offset === settings.itemOffset}
             >
-              <H2>{offset}</H2>
+              <Body>{offset}</Body>
             </ItemWrapper>
           </Margin>
         ))}
       </ConfigurationRowWrapper>
     </Margin>
-    <Margin margin="6px 0px 0px 0px">
+    <Margin marginTop={6}>
       <ConfigurationRowWrapper>
         <FlexWrapper>
-          <H2 textAlign="left">Animation duration: </H2>
+          <Body textAlign="left">Animation duration: </Body>
         </FlexWrapper>
         {configurationSettings.animationDurations.map(animationDuration => (
-          <Margin margin="0px 6px 0px 0px">
+          <Margin marginRight={6}>
             <ItemWrapper
               onPress={(): void => setSettings({ ...settings, animationDuration })}
               isSelected={animationDuration === settings.animationDuration}
             >
-              <H2>{animationDuration}</H2>
+              <Body>{animationDuration}</Body>
             </ItemWrapper>
           </Margin>
         ))}

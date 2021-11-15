@@ -7,7 +7,7 @@ import {
   useGetAnimatedPropsSecondLine,
   useGetAnimatedPropsThirdLine,
   useGetAnimation,
-} from '../../worklets';
+} from '../worklets';
 
 const HEIGHT = 100;
 const WIDTH = 100;
@@ -21,6 +21,7 @@ interface BurgerMenuProps {
   color?: string;
   type?: string;
   itemOffset?: number;
+  animationDuration?: number;
 }
 
 const TouchableOpacity = styled.TouchableOpacity<{ scale: number }>`
@@ -38,10 +39,12 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({
   scale: scaleSetting,
   color: colorSetting,
   type: typeSetting,
+  animationDuration: animationDurationSetting,
   itemOffset: itemOffsetSettings,
 }) => {
   const { animationClock, rotation, animation } = useGetAnimation({
     type: typeSetting ?? DEFAULT_ANIMATION,
+    animationDuration: animationDurationSetting,
   });
 
   const fill = colorSetting ?? COLOR;

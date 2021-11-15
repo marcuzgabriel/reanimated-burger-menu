@@ -15,10 +15,8 @@ module.exports = {
     app: path.join(__dirname, '../src/index.web.ts'),
   },
   devServer: {
-    disableHostCheck: true,
     historyApiFallback: true,
     hot: true,
-    watchContentBase: true,
     compress: true,
     host: '0.0.0.0',
     port: 3000,

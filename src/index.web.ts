@@ -3,10 +3,10 @@ import App from '.';
 
 interface WebappRootTag {
   __webappRootTag?: HTMLElement;
-  document: Document & any  ;
+  document: Document & any;
 }
 
-type GlobalType = NodeJS.Global & typeof globalThis & WebappRootTag;
+type GlobalType = typeof globalThis & WebappRootTag;
 
 const globalAny = global as GlobalType;
 const rootTag = globalAny.document.getElementById('root');

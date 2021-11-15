@@ -18,7 +18,7 @@
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx",
-    "reanimated-burger-menu.ts"
+    "reanimated-burger-menu.d.ts"
   ],
   "exclude": [
     "node_modules", "babel.config.js", "metro.config.js", "jest.config.js"

@@ -1,11 +1,21 @@
 import React from 'react';
-import MorphingArrow from './examples/MorphingArrow';
-import 'setimmediate'
+import styled from 'styled-components/native';
+import BurgerMenu from './examples/BurgerMenu';
+import 'setimmediate';
 
 if (!global.setImmediate) {
-  global.setImmediate = setTimeout;
+  global.setImmediate = setTimeout as any;
 }
 
-const App: React.FC = () => <MorphingArrow />;
+const RowWrapper = styled.View`
+  flex-direction: row;
+`;
+
+const App: React.FC = () => (
+  <RowWrapper>
+    <BurgerMenu type="elasticRotation" />
+    <BurgerMenu type="slider" />
+  </RowWrapper>
+);
 
 export default App;

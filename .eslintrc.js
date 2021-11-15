@@ -5,19 +5,19 @@ module.exports = {
     'plugin:prettier/recommended',
     'plugin:@typescript-eslint/recommended',
     'prettier',
-    'prettier/@typescript-eslint',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     sourceType: 'module',
     project: './tsconfig.json',
+    tsconfigRootDir: __dirname,
   },
   env: {
     node: true,
     jest: true,
   },
   ignorePatterns: ['.eslintrc.js'],
-  plugins: ['@typescript-eslint/eslint-plugin'],
+  plugins: ['@typescript-eslint'],
   rules: {
     '@typescript-eslint/ban-ts-comment': [
       'error',

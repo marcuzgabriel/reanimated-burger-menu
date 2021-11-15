@@ -1,2 +1,0 @@
-export const SCROLL_EVENT_THROTTLE = 16;
-export const ANDROID_FADING_EDGE_LENGTH = 50;

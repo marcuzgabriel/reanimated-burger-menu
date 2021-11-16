@@ -15,5 +15,8 @@ https://marcuzgabriel.github.io/reanimated-burger-menu/
   dimensions={24} // -> number
   itemOffset={10} // -> number
   animationDuration={250} // -> number
+  waitForAnimation={{
+    isReady: boolean, // -> Wait for another animation to be done. This help to control on press activity. Example will come soon.
+  }}
 />
 ```

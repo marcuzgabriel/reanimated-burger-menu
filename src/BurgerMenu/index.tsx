@@ -23,6 +23,9 @@ interface BurgerMenuProps {
   dimensions?: number;
   itemOffset?: number;
   animationDuration?: number;
+  waitForAnimation?: {
+    isReady?: boolean;
+  };
   runAnimation?: boolean | Animated.SharedValue<boolean>;
   onPress?: () => void;
 }
@@ -45,10 +48,11 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({
   animationDuration: animationDurationSetting,
   itemOffset: itemOffsetSettings,
   type: typeSetting,
+  waitForAnimation: waitForAnimationSetting,
   runAnimation: runAnimationSetting,
   onPress: onPressSetting,
 }) => {
-  const { animationClock, rotation, animation } = useGetAnimation({
+  const { animationClock, rotation, animation, isAnimationRunning } = useGetAnimation({
     type: typeSetting ?? DEFAULT_ANIMATION,
     animationDuration: animationDurationSetting,
   });
@@ -88,8 +92,14 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({
       onPressSetting();
     }
 
-    animation();
-  }, [animation, onPressSetting]);
+    if (typeof waitForAnimationSetting?.isReady === 'boolean') {
+      if (waitForAnimationSetting?.isReady) {
+        animation();
+      }
+    } else {
+      animation();
+    }
+  }, [animation, waitForAnimationSetting, onPressSetting]);
 
   useAnimatedReaction(
     () => runAnimationSetting,

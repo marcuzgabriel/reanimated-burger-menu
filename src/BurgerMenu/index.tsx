@@ -23,7 +23,7 @@ interface BurgerMenuProps {
   dimensions?: number;
   itemOffset?: number;
   animationDuration?: number;
-  runAnimation?: boolean;
+  runAnimation?: boolean | Animated.SharedValue<boolean>;
   onPress?: () => void;
 }
 
@@ -93,8 +93,11 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({
 
   useAnimatedReaction(
     () => runAnimationSetting,
-    res => {
-      if (typeof res === 'boolean') {
+    () => {
+      if (
+        typeof runAnimationSetting === 'boolean' ||
+        typeof runAnimationSetting?.value === 'boolean'
+      ) {
         animation();
       }
     },

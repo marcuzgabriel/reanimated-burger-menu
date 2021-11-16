@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { Platform, useWindowDimensions } from 'react-native';
 import { ScrollView } from 'react-native';
+import { useSharedValue } from 'react-native-reanimated';
 import styled from 'styled-components/native';
 import BurgerMenu from '../BurgerMenu';
 import Configuration from './Configuration';
@@ -91,6 +92,7 @@ const Examples: React.FC = () => {
         component: (
           <BurgerMenu
             type="elasticRotation"
+            onPress={(): any => undefined}
             color={settings.color}
             scale={settings.scale}
             dimensions={settings.dimensions}
@@ -105,6 +107,7 @@ const Examples: React.FC = () => {
         component: (
           <BurgerMenu
             type="normalRotation"
+            onPress={(): any => undefined}
             color={settings.color}
             scale={settings.scale}
             dimensions={settings.dimensions}
@@ -119,6 +122,7 @@ const Examples: React.FC = () => {
         component: (
           <BurgerMenu
             type="slider"
+            onPress={(): any => undefined}
             color={settings.color}
             scale={settings.scale}
             dimensions={settings.dimensions}
@@ -133,6 +137,7 @@ const Examples: React.FC = () => {
         component: (
           <BurgerMenu
             type="boring"
+            onPress={(): any => undefined}
             color={settings.color}
             scale={settings.scale}
             dimensions={settings.dimensions}

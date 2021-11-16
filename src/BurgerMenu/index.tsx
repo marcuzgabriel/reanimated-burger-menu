@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react';
 import styled from 'styled-components/native';
-import Animated, { useAnimatedStyle } from 'react-native-reanimated';
+import Animated, { useAnimatedReaction, useAnimatedStyle } from 'react-native-reanimated';
 import Svg, { Path } from 'react-native-svg';
 import {
   useGetAnimatedPropsFirstLine,
@@ -23,6 +23,7 @@ interface BurgerMenuProps {
   dimensions?: number;
   itemOffset?: number;
   animationDuration?: number;
+  runAnimation?: boolean;
   onPress?: () => void;
 }
 
@@ -44,6 +45,7 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({
   animationDuration: animationDurationSetting,
   itemOffset: itemOffsetSettings,
   type: typeSetting,
+  runAnimation: runAnimationSetting,
   onPress: onPressSetting,
 }) => {
   const { animationClock, rotation, animation } = useGetAnimation({
@@ -89,9 +91,23 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({
     animation();
   }, [animation, onPressSetting]);
 
+  useAnimatedReaction(
+    () => runAnimationSetting,
+    res => {
+      if (typeof res === 'boolean') {
+        animation();
+      }
+    },
+    [runAnimationSetting],
+  );
+
   return (
     <Wrapper>
-      <TouchableOpacity onPress={onPressCallback} scale={scale}>
+      <TouchableOpacity
+        activeOpacity={onPressSetting ? 0.2 : 1}
+        onPress={onPressSetting ? onPressCallback : undefined}
+        scale={scale}
+      >
         <Animated.View style={rotationStyle}>
           <Svg {...dimensions}>
             {animationPaths.map((animationPath, i) => (

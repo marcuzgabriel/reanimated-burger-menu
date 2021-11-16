@@ -15,9 +15,9 @@ export const useGetAnimatedPropsFirstLine = ({
 
     const startX = width / 2;
     const startY = height / 2;
-    const x_offset = width >= 50 ? width / 4 : width / 6;
+    const x_offset = width / 2.5;
 
-    const directional_offset = width / 6;
+    const directional_offset = width / 3.5;
 
     const straightArrow = createPath({ x: startX - x_offset, y: startY + offset });
     addCurve(straightArrow, {

@@ -7,9 +7,16 @@ interface ConfigurationProps {
     animationDuration: number;
     itemOffset: number;
     scale: number;
+    dimensions: number;
   };
   setSettings: Dispatch<
-    SetStateAction<{ color: string; animationDuration: number; itemOffset: number; scale: number }>
+    SetStateAction<{
+      color: string;
+      animationDuration: number;
+      itemOffset: number;
+      scale: number;
+      dimensions: number;
+    }>
   >;
 }
 
@@ -79,6 +86,7 @@ const configurationSettings = {
   scaling: [0.5, 0.7, 1],
   itemOffset: [10, 12, 15],
   animationDurations: [250, 500, 1000],
+  dimensions: [25, 35, 50],
 };
 
 const Configruation: React.FC<ConfigurationProps> = ({ settings, setSettings }) => (
@@ -114,6 +122,23 @@ const Configruation: React.FC<ConfigurationProps> = ({ settings, setSettings }) 
               isSelected={scale === settings.scale}
             >
               <Body>{scale}</Body>
+            </ItemWrapper>
+          </Margin>
+        ))}
+      </ConfigurationRowWrapper>
+    </Margin>
+    <Margin marginTop={6}>
+      <ConfigurationRowWrapper>
+        <FlexWrapper>
+          <Body textAlign="left">Dimensions: </Body>
+        </FlexWrapper>
+        {configurationSettings.dimensions.map(dimension => (
+          <Margin marginRight={6}>
+            <ItemWrapper
+              onPress={(): void => setSettings({ ...settings, dimensions: dimension })}
+              isSelected={dimension === settings.dimensions}
+            >
+              <Body>{dimension}</Body>
             </ItemWrapper>
           </Margin>
         ))}

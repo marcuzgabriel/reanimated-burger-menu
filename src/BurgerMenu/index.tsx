@@ -9,8 +9,8 @@ import {
   useGetAnimation,
 } from '../worklets';
 
-const HEIGHT = 100;
-const WIDTH = 100;
+const HEIGHT = 50;
+const WIDTH = 50;
 const SCALE = 1;
 const ITEM_OFFSET = 15;
 const COLOR = 'black';
@@ -20,8 +20,10 @@ interface BurgerMenuProps {
   scale?: number;
   color?: string;
   type?: string;
+  dimensions?: number;
   itemOffset?: number;
   animationDuration?: number;
+  onPress?: () => void;
 }
 
 const TouchableOpacity = styled.TouchableOpacity<{ scale: number }>`
@@ -29,8 +31,8 @@ const TouchableOpacity = styled.TouchableOpacity<{ scale: number }>`
 `;
 
 const Wrapper = styled.View`
-  height: ${HEIGHT}px;
-  width: ${WIDTH}px;
+  justify-content: center;
+  align-items: center;
 `;
 
 const AnimatedPath = Animated.createAnimatedComponent(Path);
@@ -38,9 +40,11 @@ const AnimatedPath = Animated.createAnimatedComponent(Path);
 const BurgerMenu: React.FC<BurgerMenuProps> = ({
   scale: scaleSetting,
   color: colorSetting,
-  type: typeSetting,
+  dimensions: dimensionSettings,
   animationDuration: animationDurationSetting,
   itemOffset: itemOffsetSettings,
+  type: typeSetting,
+  onPress: onPressSetting,
 }) => {
   const { animationClock, rotation, animation } = useGetAnimation({
     type: typeSetting ?? DEFAULT_ANIMATION,
@@ -50,27 +54,25 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({
   const fill = colorSetting ?? COLOR;
   const scale = scaleSetting ?? SCALE;
   const itemOffset = itemOffsetSettings ?? ITEM_OFFSET;
+  const dimensions = { width: dimensionSettings ?? WIDTH, height: dimensionSettings ?? HEIGHT };
+  const animatedProps = {
+    dimensions,
+    fill,
+    animationClock,
+    animationType: typeSetting,
+  };
 
   const animatedPropsLineOne = useGetAnimatedPropsFirstLine({
-    dimensions: { width: WIDTH, height: HEIGHT },
-    fill,
+    ...animatedProps,
     offset: -itemOffset,
-    animationClock,
-    animationType: typeSetting,
   });
   const animatedPropsLineTwo = useGetAnimatedPropsSecondLine({
-    dimensions: { width: WIDTH, height: HEIGHT },
-    fill,
+    ...animatedProps,
     offset: 0,
-    animationClock,
-    animationType: typeSetting,
   });
   const animatedPropsLineThree = useGetAnimatedPropsThirdLine({
-    dimensions: { width: WIDTH, height: HEIGHT },
-    fill,
+    ...animatedProps,
     offset: itemOffset,
-    animationClock,
-    animationType: typeSetting,
   });
 
   const animationPaths = [animatedPropsLineOne, animatedPropsLineTwo, animatedPropsLineThree];
@@ -80,14 +82,18 @@ const BurgerMenu: React.FC<BurgerMenuProps> = ({
   }));
 
   const onPressCallback = useCallback(() => {
+    if (onPressSetting) {
+      onPressSetting();
+    }
+
     animation();
-  }, []);
+  }, [animation, onPressSetting]);
 
   return (
     <Wrapper>
       <TouchableOpacity onPress={onPressCallback} scale={scale}>
         <Animated.View style={rotationStyle}>
-          <Svg width={HEIGHT} height={WIDTH}>
+          <Svg {...dimensions}>
             {animationPaths.map((animationPath, i) => (
               <AnimatedPath
                 key={i}

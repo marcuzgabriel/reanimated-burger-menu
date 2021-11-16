@@ -75,9 +75,10 @@ export const settingTitles = ['Scale', 'Item offset', 'Color', 'Animation durati
 const Examples: React.FC = () => {
   const [settings, setSettings] = useState({
     color: 'white',
+    dimensions: 50,
     animationDuration: 500,
     itemOffset: 15,
-    scale: 0.7,
+    scale: 1,
   });
 
   const { width } = useWindowDimensions();
@@ -92,6 +93,7 @@ const Examples: React.FC = () => {
             type="elasticRotation"
             color={settings.color}
             scale={settings.scale}
+            dimensions={settings.dimensions}
             itemOffset={settings.itemOffset}
             animationDuration={settings.animationDuration}
           />
@@ -105,6 +107,7 @@ const Examples: React.FC = () => {
             type="normalRotation"
             color={settings.color}
             scale={settings.scale}
+            dimensions={settings.dimensions}
             itemOffset={settings.itemOffset}
             animationDuration={settings.animationDuration}
           />
@@ -118,6 +121,7 @@ const Examples: React.FC = () => {
             type="slider"
             color={settings.color}
             scale={settings.scale}
+            dimensions={settings.dimensions}
             itemOffset={settings.itemOffset}
             animationDuration={settings.animationDuration}
           />
@@ -131,6 +135,7 @@ const Examples: React.FC = () => {
             type="boring"
             color={settings.color}
             scale={settings.scale}
+            dimensions={settings.dimensions}
             itemOffset={settings.itemOffset}
             animationDuration={settings.animationDuration}
           />
@@ -162,7 +167,7 @@ const Examples: React.FC = () => {
             {components.map(({ title, backgroundColor, component }, i) => (
               <BurgerMenuWrapper key={i} backgroundColor={backgroundColor}>
                 <Body>{title}</Body>
-                {component}
+                <Margin marginTop={12}>{component}</Margin>
               </BurgerMenuWrapper>
             ))}
           </RowWrapper>
